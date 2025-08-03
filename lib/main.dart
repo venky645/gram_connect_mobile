@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gram_connect/presentation/auth/login_view.dart';
+import 'package:gram_connect/features/auth/auth/login_view.dart';
 
 void main() {
   runApp(const MainApp());

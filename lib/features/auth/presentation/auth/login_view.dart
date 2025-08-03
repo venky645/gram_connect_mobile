@@ -109,6 +109,7 @@ class _LoginViewState extends State<LoginView> {
                       SizedBox(height: 30),
                       ElevatedButton(
                         onPressed: () {
+                          // login trigger - bloc.add(LoginEvent(email , pwd));
                           setState(() {
                             _formkey.currentState!.validate();
                           });

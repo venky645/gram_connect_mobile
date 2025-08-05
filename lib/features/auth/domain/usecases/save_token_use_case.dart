@@ -1,7 +1,7 @@
 import 'package:gram_connect/core/usecases/usecase.dart';
 import 'package:gram_connect/services/shared_pref_service.dart';
 
-class SaveTokenUseCase extends Usecase<void,String> {
+class SaveTokenUseCase extends Usecase<void, String> {
   final SharedPrefService _sharedPrefService;
   SaveTokenUseCase(this._sharedPrefService);
   @override

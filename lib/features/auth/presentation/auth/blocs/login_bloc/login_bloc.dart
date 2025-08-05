@@ -3,12 +3,16 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gram_connect/features/auth/domain/usecases/login_usecase.dart';
 import 'package:gram_connect/features/auth/domain/usecases/params/auth_params.dart';
-import 'package:gram_connect/features/auth/presentation/auth/bloc/auth_event.dart';
-import 'package:gram_connect/features/auth/presentation/auth/bloc/auth_state.dart';
+import 'package:gram_connect/features/auth/domain/usecases/save_token_use_case.dart';
+import 'package:gram_connect/features/auth/presentation/auth/blocs/login_bloc/login_event.dart';
+import 'package:gram_connect/features/auth/presentation/auth/blocs/login_bloc/login_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginUsecase _loginUsecase;
-  AuthBloc(this._loginUsecase) : super(LoginInitState()) {
+  final SaveTokenUseCase _saveTokenUseCase;
+
+  AuthBloc(this._loginUsecase, this._saveTokenUseCase)
+    : super(LoginInitState()) {
     on<LoginEvent>(_onLoginRequested);
     on<SignUpEvent>(_onSignUpRequest);
   }
@@ -23,7 +27,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         AuthParams(email: event.email, password: event.password),
       );
 
-      emit(LoginSuccessState(email: respose.email, id: respose.id));
+      if (respose.email.isNotEmpty &&
+          respose.id.isNotEmpty &&
+          respose.token.isNotEmpty) {
+        _saveTokenUseCase.call(respose.token);
+        emit(LoginSuccessState(email: respose.email, id: respose.id));
+      }
     } catch (e) {
       emit(LoginFailureState(error: e.toString()));
     }

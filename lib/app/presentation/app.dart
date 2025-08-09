@@ -6,6 +6,8 @@ import 'package:gram_connect/core/di/dependency_injection_container.dart';
 import 'package:gram_connect/features/auth/presentation/auth/blocs/bloc/auth_bloc.dart';
 import 'package:gram_connect/ui_handler/bloc/ui_handler_bloc.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -17,6 +19,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (context) => di<AuthBloc>()),
       ],
       child: MaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'GramConnect',
         initialRoute: AppRoutes.login,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gram_connect/app/presentation/app.dart';
 import 'package:gram_connect/app/routes/app_routes.dart' show AppRoutes;
+import 'package:gram_connect/features/home/presentation/home_view.dart';
 import 'package:gram_connect/ui_handler/bloc/ui_handler_bloc.dart';
 import 'package:gram_connect/ui_handler/bloc/ui_handler_state.dart';
 
@@ -14,7 +16,7 @@ class AppWrapper extends StatelessWidget {
       listener: (context, state) {
         if (state is GoToHomePageState) {
           print('suceessss.q');
-          Navigator.pushNamed(context, AppRoutes.home);
+          navigatorKey.currentState?.pushNamed(AppRoutes.home);
         }
       },
       child: child,

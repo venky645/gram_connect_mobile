@@ -21,16 +21,8 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: BlocConsumer<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is LoginSuccessState) {
-            print('login success : token: ${state.id}');
-          } else if (state is LoginFailureState) {
-            print("failure error : ${state.error}");
-          }
-        },
+      body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
-          print('state:$state');
           final isLoadingState = state is LoginLoadingState;
           return Container(
             decoration: BoxDecoration(

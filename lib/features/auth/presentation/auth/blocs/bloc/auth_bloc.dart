@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gram_connect/features/auth/domain/usecases/login_usecase.dart';
 import 'package:gram_connect/features/auth/domain/usecases/params/auth_params.dart';
 import 'package:gram_connect/features/auth/domain/usecases/save_token_use_case.dart';
-import 'package:gram_connect/features/auth/presentation/auth/blocs/login_bloc/login_event.dart';
-import 'package:gram_connect/features/auth/presentation/auth/blocs/login_bloc/login_state.dart';
+import 'package:gram_connect/features/auth/presentation/auth/blocs/bloc/auth_event.dart';
+import 'package:gram_connect/features/auth/presentation/auth/blocs/bloc/auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginUsecase _loginUsecase;
@@ -24,8 +24,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(LoginLoadingState());
     try {
       final respose = await _loginUsecase.call(
-        AuthParams(email: event.email, password: event.password),
+        AuthParams(
+          email: event.authParams.email,
+          password: event.authParams.password,
+        ),
       );
+
 
       if (respose.email.isNotEmpty &&
           respose.id.isNotEmpty &&

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:gram_connect/core/network/api_constants.dart';
-import 'package:gram_connect/features/auth/data/models/user.dart';
+import 'package:gram_connect/features/auth/data/models/auth_response_model.dart';
 import 'package:gram_connect/features/auth/domain/entities/user_entity.dart';
 import 'package:gram_connect/features/auth/domain/repositories/auth_repositories.dart';
 
@@ -16,8 +16,8 @@ class AuthRepostoryImpl implements AuthRepositories {
         data: {'email': email, 'password': password},
       );
 
-      final userModel = UserModel.fromJson(response.data);
-      return userModel.toUserEntity();
+      final authresponseModel = AuthResponseModel.fromJson(response.data);
+      return authresponseModel.toUserEntity();
     } on Dio catch (e) {
       throw Exception('login failed: ${e.toString()}');
     }

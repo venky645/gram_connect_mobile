@@ -1,12 +1,13 @@
+import 'package:gram_connect/features/auth/domain/usecases/params/auth_params.dart';
+
 abstract class AuthEvent {}
 
 class LoginInitEvent extends AuthEvent {}
 
 class LoginEvent extends AuthEvent {
-  final String email;
-  final String password;
+  final AuthParams authParams;
 
-  LoginEvent({required this.email, required this.password});
+  LoginEvent(this.authParams);
 }
 
 class SignUpEvent extends AuthEvent {}

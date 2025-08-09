@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gram_connect/core/di/dependency_injection_container.dart';
-import 'package:gram_connect/features/auth/presentation/auth/blocs/login_bloc/login_bloc.dart';
+import 'package:gram_connect/features/auth/presentation/auth/blocs/bloc/auth_bloc.dart';
 import 'package:gram_connect/features/auth/presentation/auth/login_view.dart';
-import 'package:gram_connect/services/shared_pref_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

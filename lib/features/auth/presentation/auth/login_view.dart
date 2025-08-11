@@ -4,6 +4,7 @@ import 'package:gram_connect/features/auth/domain/usecases/params/auth_params.da
 import 'package:gram_connect/features/auth/presentation/auth/blocs/bloc/auth_bloc.dart';
 import 'package:gram_connect/features/auth/presentation/auth/blocs/bloc/auth_event.dart';
 import 'package:gram_connect/features/auth/presentation/auth/blocs/bloc/auth_state.dart';
+import 'package:gram_connect/features/auth/presentation/auth/signup_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -150,7 +151,14 @@ class _LoginViewState extends State<LoginView> {
                             children: [
                               Text("Don't have a Account?"),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => SignupView(),
+                                    ),
+                                  );
+                                },
                                 child: Text("Register"),
                               ),
                             ],

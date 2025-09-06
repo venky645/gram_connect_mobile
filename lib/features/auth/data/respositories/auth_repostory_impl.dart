@@ -22,4 +22,19 @@ class AuthRepostoryImpl implements AuthRepositories {
       throw Exception('login failed: ${e.toString()}');
     }
   }
+
+  @override
+  Future<UserEntity> signup(String email, String password) async {
+    try {
+      final response = await dio.post(
+        ApiConstants.signUP,
+        data: {'email': email, 'password': password},
+      );
+
+      final authresponseModel = AuthResponseModel.fromJson(response.data);
+      return authresponseModel.toUserEntity();
+    } on Dio catch (e) {
+      throw Exception('signup failed: ${e.toString()}');
+    }
+  }
 }

@@ -3,5 +3,5 @@ import 'package:gram_connect/features/auth/domain/entities/user_entity.dart'
 
 abstract class AuthRepositories {
   Future<UserEntity> login(String email, String password);
-  // signUp();
+  Future<UserEntity> signup(String email, String password);
 }

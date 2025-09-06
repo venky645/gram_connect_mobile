@@ -18,6 +18,21 @@ class _LoginViewState extends State<LoginView> {
   final _formkey = GlobalKey<FormState>();
   final _emailTextEditingController = TextEditingController();
   final _pwdTextEditingController = TextEditingController();
+  void _onButtonPress() {
+    //validation logic
+
+    //satisfy
+
+    BlocProvider.of<AuthBloc>(context).add(
+      LoginEvent(
+        AuthParams(
+          email: _emailTextEditingController.text,
+          password: _pwdTextEditingController.text,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +40,7 @@ class _LoginViewState extends State<LoginView> {
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           final isLoadingState = state is LoginLoadingState;
+          // failure state
           return Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -114,7 +130,7 @@ class _LoginViewState extends State<LoginView> {
                               ),
                             ),
                           ),
-                          //SizedBox(height: 5),
+
                           Align(
                             alignment: Alignment.topLeft,
                             child: TextButton(
@@ -125,18 +141,7 @@ class _LoginViewState extends State<LoginView> {
                           SizedBox(height: 30),
                           ElevatedButton(
                             onPressed: () {
-                              isLoadingState
-                                  ? null
-                                  : BlocProvider.of<AuthBloc>(context).add(
-                                      LoginEvent(
-                                        AuthParams(
-                                          email:
-                                              _emailTextEditingController.text,
-                                          password:
-                                              _pwdTextEditingController.text,
-                                        ),
-                                      ),
-                                    );
+                              isLoadingState ? null : _onButtonPress();
                             },
                             child: isLoadingState
                                 ? SizedBox(

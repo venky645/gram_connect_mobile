@@ -16,3 +16,10 @@ class LoginFailureState extends AuthState {
 
   LoginFailureState({required this.error});
 }
+
+class SignUpSuccessState extends AuthState {
+  final String email;
+  final String id;
+
+  SignUpSuccessState({required this.email, required this.id});
+}

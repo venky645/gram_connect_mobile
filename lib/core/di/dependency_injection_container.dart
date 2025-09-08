@@ -4,6 +4,7 @@ import 'package:gram_connect/features/auth/data/respositories/auth_repostory_imp
 import 'package:gram_connect/features/auth/domain/repositories/auth_repositories.dart';
 import 'package:gram_connect/features/auth/domain/usecases/login_usecase.dart';
 import 'package:gram_connect/features/auth/domain/usecases/save_token_use_case.dart';
+import 'package:gram_connect/features/auth/domain/usecases/signup_usecase.dart';
 import 'package:gram_connect/features/auth/presentation/auth/blocs/bloc/auth_bloc.dart';
 import 'package:gram_connect/services/shared_pref_service.dart';
 import 'package:gram_connect/ui_handler/bloc/ui_handler_bloc.dart';
@@ -21,6 +22,9 @@ Future<void> initDependecies() async {
     ..registerSingleton<AuthRepositories>(AuthRepostoryImpl(di<Dio>()))
     // Register UseCases (Factory)
     ..registerFactory<LoginUsecase>(() => LoginUsecase(di<AuthRepositories>()))
+    ..registerFactory<SignupUsecase>(
+      () => SignupUsecase(authRepositories: di<AuthRepositories>()),
+    )
     ..registerFactory<SaveTokenUseCase>(
       () => SaveTokenUseCase(di<SharedPrefService>()),
     )
@@ -31,6 +35,7 @@ Future<void> initDependecies() async {
         di<LoginUsecase>(),
         di<SaveTokenUseCase>(),
         di<UiHandlerBloc>(),
+        di<SignupUsecase>(),
       ),
     );
 }

@@ -22,7 +22,7 @@ class App extends StatelessWidget {
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         title: 'GramConnect',
-        initialRoute: AppRoutes.login,
+        initialRoute: AppRoutes.home,
         onGenerateRoute: AppRoutes.generateRoute,
         builder: (context, child) => AppWrapper(child: child!),
       ),

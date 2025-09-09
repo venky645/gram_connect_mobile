@@ -1,4 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:gram_connect/features/weather/data/repositories/weather_repository_impl.dart';
+import 'package:gram_connect/features/weather/domain/repositories/get_weather_forecast_repository.dart';
+import 'package:gram_connect/features/weather/domain/usecases.dart/get_weather_forcast_usecase.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -37,17 +41,23 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
 
-            Row(
-              mainAxisSize: MainAxisSize.max,
+            GestureDetector(
+              onTap: () {
+                final weatherRepsotory = WeatherRepositoryImpl(dio: Dio());
+                weatherRepsotory.getWeatherForecast(12.9591, 77.7000);
+              },
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
 
-              children: [
-                Text(
-                  'location',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(width: 5),
-                Icon(Icons.keyboard_arrow_down_outlined, size: 12),
-              ],
+                children: [
+                  Text(
+                    'location',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(Icons.keyboard_arrow_down_outlined, size: 12),
+                ],
+              ),
             ),
           ],
         ),
@@ -125,8 +135,6 @@ class _HomeViewState extends State<HomeView> {
                     children: [
                       Image.asset('assets/icons/sun.png', height: 40),
                       Column(
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: 2,
                         children: [
                           Text(
                             'Mon',
@@ -140,7 +148,7 @@ class _HomeViewState extends State<HomeView> {
                         ],
                       ),
                       Column(
-                        spacing: 2,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             'Tue',
@@ -154,7 +162,7 @@ class _HomeViewState extends State<HomeView> {
                         ],
                       ),
                       Column(
-                        spacing: 2,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
                             'Wed',

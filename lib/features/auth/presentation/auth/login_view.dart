@@ -111,6 +111,7 @@ class _LoginViewState extends State<LoginView> {
                               // ignore: deprecated_member_use
                               prefixIcon: Icon(
                                 Icons.key_outlined,
+                                // ignore: deprecated_member_use
                                 color: Colors.black.withOpacity(0.3),
                               ),
                               hintText: "Password",
@@ -132,7 +133,6 @@ class _LoginViewState extends State<LoginView> {
                               ),
                             ),
                           ),
-
                           Align(
                             alignment: Alignment.topLeft,
                             child: TextButton(

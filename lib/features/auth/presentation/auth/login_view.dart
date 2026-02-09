@@ -108,6 +108,7 @@ class _LoginViewState extends State<LoginView> {
                               return null;
                             },
                             decoration: InputDecoration(
+                              // ignore: deprecated_member_use
                               prefixIcon: Icon(
                                 Icons.key_outlined,
                                 color: Colors.black.withOpacity(0.3),
@@ -123,6 +124,7 @@ class _LoginViewState extends State<LoginView> {
                                 icon: _obscureText
                                     ? Icon(Icons.visibility_outlined)
                                     : Icon(Icons.visibility_off_outlined),
+                                // ignore: deprecated_member_use
                                 color: Colors.black.withOpacity(0.5),
                               ),
                               border: OutlineInputBorder(

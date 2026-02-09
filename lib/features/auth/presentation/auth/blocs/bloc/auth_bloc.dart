@@ -43,7 +43,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (respose.email.isNotEmpty &&
           respose.id.isNotEmpty &&
           respose.token.isNotEmpty) {
-        print('success');
         _saveTokenUseCase.call(respose.token);
 
         _uiHandlerBloc.add(GoToHomePageEvent());
@@ -51,7 +50,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         
       }
     } catch (e) {
-      print('failure....');
       emit(LoginFailureState(error: e.toString()));
     }
   }
@@ -72,7 +70,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (respose.email.isNotEmpty &&
           respose.id.isNotEmpty &&
           respose.token.isNotEmpty) {
-        print('success');
         _saveTokenUseCase.call(respose.token);
 
         _uiHandlerBloc.add(GoToHomePageEvent());
@@ -80,7 +77,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(SignUpSuccessState(email: respose.email, id: respose.id));
       }
     } catch (e) {
-      print('failure....');
       emit(LoginFailureState(error: e.toString()));
     }
   }

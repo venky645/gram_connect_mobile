@@ -13,7 +13,6 @@ class UiHandlerBloc extends Bloc<UiHandlerEvent, UiHandlerState> {
     GoToHomePageEvent event,
     Emitter<UiHandlerState> emit,
   ) {
-    print('success ui handler bloc');
     emit(GoToHomePageState());
   }
 }

@@ -11,7 +11,6 @@ class WeatherRepositoryImpl implements WeatherRepository {
   Future<Weather> getWeatherForecast(double lat, double lon) async {
     final url = ApiConstants.getWeather;
     final response = await dio.get('$url?latitude=$lat&longitude=$lon');
-    print(response);
     return WeatherModel.fromJson(response.data);
   }
 }

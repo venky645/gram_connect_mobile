@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:gram_connect/features/weather/data/repositories/weather_repository_impl.dart';
-import 'package:gram_connect/features/weather/domain/repositories/get_weather_forecast_repository.dart';
-import 'package:gram_connect/features/weather/domain/usecases.dart/get_weather_forcast_usecase.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

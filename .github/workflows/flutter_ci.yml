@@ -31,3 +31,5 @@ jobs:
           else
             echo "No tests found"
           fi
+      - name: Build Apk
+        run: flutter build apk

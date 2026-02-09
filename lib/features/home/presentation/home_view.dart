@@ -30,7 +30,6 @@ class _HomeViewState extends State<HomeView> {
         leading: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
-
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -40,7 +39,6 @@ class _HomeViewState extends State<HomeView> {
                 height: 25,
               ),
             ),
-
             GestureDetector(
               onTap: () {
                 final weatherRepsotory = WeatherRepositoryImpl(dio: Dio());
@@ -48,7 +46,6 @@ class _HomeViewState extends State<HomeView> {
               },
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-
                 children: [
                   Text(
                     'location',
@@ -71,7 +68,6 @@ class _HomeViewState extends State<HomeView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
             RichText(
               text: TextSpan(
@@ -80,7 +76,6 @@ class _HomeViewState extends State<HomeView> {
                     text: 'Welcome,',
                     style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
                   ),
-
                   TextSpan(
                     text: 'Venkatesh',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -88,12 +83,10 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
             ),
-
             SizedBox(height: 24),
-
             Container(
               height: 120,
-              padding: EdgeInsetsGeometry.all(16),
+              padding: EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: Color(0xFFBFDBFE),
@@ -131,7 +124,6 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 16,
                     children: [
                       Image.asset('assets/icons/sun.png', height: 40),
                       Column(

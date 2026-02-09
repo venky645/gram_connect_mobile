@@ -1,4 +1,5 @@
-name: Flutter CI
+name: Flutter-CI
+
 
 on:
   push:

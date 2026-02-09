@@ -33,3 +33,9 @@ jobs:
           fi
       - name: Build Apk
         run: flutter build apk
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gram_connect_apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
